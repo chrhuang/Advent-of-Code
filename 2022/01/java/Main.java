@@ -3,13 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        String[] array = Input.input("example.txt");
-        List<Elf> elfs = new ArrayList<Elf>();
+
+    public  static List<Elf> getElfs(String[] array) {
+        List<Elf> elves = new ArrayList<Elf>();
         Elf elf = new Elf();
         for (String string : array) {
             if (string.matches("")) {
-                elfs.add(elf);
+                elves.add(elf);
                 elf = new Elf();
             }
             else {
@@ -17,14 +17,24 @@ public class Main {
             }
         }
         if (!elf.values.isEmpty()) {
-            elfs.add(elf);
+            elves.add(elf);
         }
+        return elves;
+    }
+
+    public static void resolvePartOne(List<Elf> elves) {
         Integer max = 0;
-        for (Elf tmp : elfs) {
+        for (Elf tmp : elves) {
             if (max < tmp.sum_values()) {
                 max = tmp.sum_values();
             }
         }
         System.out.println(max);
+    }
+    public static void main(String[] args) throws IOException {
+        String[] array = Input.input("first_part.txt");
+        List<Elf> elves = getElfs(array);
+
+        resolvePartOne(elves);
     }
 }
