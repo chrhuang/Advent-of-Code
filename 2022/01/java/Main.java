@@ -1,24 +1,30 @@
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         String[] array = Input.input("example.txt");
-        Elf[] elfs;
-
+        List<Elf> elfs = new ArrayList<Elf>();
         Elf elf = new Elf();
         for (String string : array) {
             if (string.matches("")) {
-//                Create a new elf
+                elfs.add(elf);
+                elf = new Elf();
             }
             else {
-//              Add string value in elf.values
+                elf.values.add(Integer.parseInt(string));
             }
         }
-        Elf elf = new Elf();
-        elf.values = new Integer[] { 1, 2, 3, 4};
-        System.out.println(elf.sum_values());
+        if (!elf.values.isEmpty()) {
+            elfs.add(elf);
+        }
+        Integer max = 0;
+        for (Elf tmp : elfs) {
+            if (max < tmp.sum_values()) {
+                max = tmp.sum_values();
+            }
+        }
+        System.out.println(max);
     }
 }
