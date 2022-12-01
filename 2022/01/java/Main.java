@@ -25,15 +25,10 @@ public class Main {
         return elves;
     }
 
-    public static Elf resolvePartOne(List<Elf> elves) {
-        Elf max_elf = elves.get(0);
-        for (Elf elf : elves) {
-            if (max_elf.sumValues() < elf.sumValues()) {
-                max_elf = elf;
-            }
-        }
-        System.out.println(max_elf.sumValues());
-        return max_elf;
+    public static void resolvePartOne(List<Elf> elves) {
+        elves.sort(Comparator.comparing(Elf::sumValues).reversed());
+
+        System.out.println(elves.get(0).sumValues());
     }
 
     public static void resolvePartTwo(List<Elf> elves) {
@@ -51,7 +46,7 @@ public class Main {
         String[] array = Input.input("first_part.txt");
         List<Elf> elves = getElfs(array);
 
-//        resolvePartOne(elves);
+        resolvePartOne(elves);
         resolvePartTwo(elves);
     }
 }
