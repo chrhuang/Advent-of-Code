@@ -25,11 +25,17 @@ public class Main {
     public static void resolvePartOne(List<Elf> elves) {
         Integer max = 0;
         for (Elf tmp : elves) {
-            if (max < tmp.sum_values()) {
-                max = tmp.sum_values();
+            if (max < tmp.sumValues()) {
+                max = tmp.sumValues();
             }
         }
         System.out.println(max);
+    }
+
+    public static void resolvePartTwo(List<Elf> elves) {
+
+        Integer max = 0;
+
     }
     public static void main(String[] args) throws IOException {
         String[] array = Input.input("first_part.txt");
