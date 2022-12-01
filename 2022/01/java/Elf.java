@@ -1,12 +1,12 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Elf {
-    Integer[] values;
+    List<Integer> values = new ArrayList<Integer>();
 
     public int sum_values()
     {
-        return Arrays.stream(values)
-                .mapToInt(Integer::intValue)
-                .sum();
+        return values.stream().mapToInt(Integer::intValue).sum();
     }
 }
